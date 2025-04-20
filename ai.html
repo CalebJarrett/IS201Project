@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stock Option Simulator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .simulator {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      background-color: #0066ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004ec2;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .profit {
+      color: green;
+    }
+
+    .loss {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>📈 Stock Option Simulator</h1>
+  <p>Explore how options work by changing the inputs!</p>
+
+  <div class="simulator">
+    <label for="optionType">Option Type</label>
+    <select id="optionType">
+      <option value="call">Call</option>
+      <option value="put">Put</option>
+    </select>
+
+    <label for="strikePrice">Strike Price ($)</label>
+    <input type="number" id="strikePrice" placeholder="e.g., 100" />
+
+    <label for="premium">Premium Paid ($)</label>
+    <input type="number" id="premium" placeholder="e.g., 5" />
+
+    <label for="stockPrice">Stock Price at Expiration ($)</label>
+    <input type="number" id="stockPrice" placeholder="e.g., 110" />
+
+    <button onclick="calculatePayoff()">Simulate</button>
+
+    <div class="result" id="resultText"></div>
+  </div>
+
+  <script>
+    function calculatePayoff() {
+      const optionType = document.getElementById('optionType').value;
+      const strike = parseFloat(document.getElementById('strikePrice').value);
+      const premium = parseFloat(document.getElementById('premium').value);
+      const stock = parseFloat(document.getElementById('stockPrice').value);
+      const resultText = document.getElementById('resultText');
+
+      if (isNaN(strike) || isNaN(premium) || isNaN(stock)) {
+        resultText.innerHTML = '<span class="loss">Please enter all fields correctly.</span>';
+        return;
+      }
+
+      let payoff = 0;
+
+      if (optionType === 'call') {
+        payoff = Math.max(0, stock - strike) - premium;
+      } else {
+        payoff = Math.max(0, strike - stock) - premium;
+      }
+
+      if (payoff > 0) {
+        resultText.innerHTML = `<span class="profit">✅ Profit: $${payoff.toFixed(2)}</span>`;
+      } else if (payoff < 0) {
+        resultText.innerHTML = `<span class="loss">❌ Loss: $${Math.abs(payoff).toFixed(2)}</span>`;
+      } else {
+        resultText.innerHTML = `<span>😐 Break-even</span>`;
+      }
+    }
+  </script>
+</body>
+</html>

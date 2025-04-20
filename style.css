@@ -1,0 +1,88 @@
+css
+body {
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1a2233;
+  margin: 0;
+  padding: 0;
+}
+
+.header-div {
+  text-align: center;
+  background-color: #2b4162;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+  border-bottom: 4px solid #38598b;
+}
+
+.intro-div {
+  margin: 2rem auto;
+  max-width: 700px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(44,65,98,0.07);
+  padding: 1.5rem;
+}
+
+.main-image {
+  display: block;
+  margin: 1.5rem auto;
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44,65,98,0.12);
+}
+
+.toc-div {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #f3f8ff;
+  border-left: 6px solid #38598b;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+}
+
+.content-div {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #f9fafc;
+  border: 1px solid #e0eafc;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.video-div, .tableau-div {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(44,65,98,0.07);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 1rem;
+  color: #38598b;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.anchor-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #2b4162;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: #38598b;
+  font-size: 1rem;
+}
